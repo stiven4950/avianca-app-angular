@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-control {
+  display: block;
+  width: 100%;
+  background-color: #e0e7ff;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: -1px -1px 3px #a6b6eb;
+}
+
+/* Para mostrar avatars */
+.upload-avatar {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.upload-avatar img {
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+
+.upload-avatar .round {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #5256ad;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.upload-avatar .round input[type="file"] {
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+.circle-avatar {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 3px;
+}
+
+.circle-avatar img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Tables */
+.custom-table thead tr th {
+  padding: 5px 10px;
+}
+
+.custom-table tbody tr:nth-child(even) td {
+  background-color: #363975;
+}

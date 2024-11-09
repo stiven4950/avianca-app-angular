@@ -1,0 +1,29 @@
+<table class="table custom-table w-full mt-3">
+  <thead>
+    <tr class="bg-indigo-500 text-white text-left">
+      <th></th>
+      <th>#</th>
+      <th>Modelo</th>
+      <th>Capacidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-indigo-100">
+    @for (airplane of airplaneProviderService.filteredAirplanes(); track $index) {
+      <tr>
+        <td></td>
+        <td style="width: 35px;">{{ $index + 1 }}</td>
+        <td>{{ airplane.model }}</td>
+        <td>{{ airplane.capacity }}</td>
+        <td>
+          <icon-button [icon]="editIcon" color="text-indigo-500" (click)="handleModify(airplane)" />
+          <icon-button [icon]="deleteIcon" color="text-red-500" (click)="handleDelete(airplane.id!)" />
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="5" class="text-center bg-indigo-100 p-2 font-semibold text-black">No hay aviones que mostrar</td>
+      </tr>
+    }
+  </tbody>
+</table>

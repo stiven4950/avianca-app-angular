@@ -21,7 +21,14 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@guards/*": ["./src/app/guards/*"],
+      "@interceptors/*": ["./src/app/interceptors/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@modules/*": ["./src/app/modules/*"],
+      "@services/*": ["./src/app/services/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

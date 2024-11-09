@@ -1,0 +1,7 @@
+<div [ngClass]="class"
+  class="flex items-start align-middle justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+  <ng-content></ng-content>
+  @if(showCloseButton) {
+  <icon-button [icon]="closeIcon" color="text-indigo-500" (click)="handleClose()" />
+  }
+</div>

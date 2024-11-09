@@ -1,0 +1,14 @@
+@if(show){
+<div
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none flex justify-center items-center">
+  <div class="relative w-auto my-6 mx-auto">
+    <div
+      [ngClass]="size"
+      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none overflow-hidden">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+<div class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+}

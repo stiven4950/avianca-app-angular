@@ -1,0 +1,10 @@
+<div class="flex flex-row">
+  <search-bar (onSearch)="handleSearch($event)"></search-bar>
+  <button class="bg-indigo-500 text-white py-1 px-2 rounded-full ms-3 hover:bg-indigo-400" (click)="handleCreate()">
+    <fa-icon [icon]="addAirplane"></fa-icon>
+    Crear
+  </button>
+</div>
+
+<app-list-airplanes (onChangeModal)="handleShowModal(true)"></app-list-airplanes>
+<app-modal-airplanes [show]="showModal()" (onClose)="handleShowModal(false)"></app-modal-airplanes>

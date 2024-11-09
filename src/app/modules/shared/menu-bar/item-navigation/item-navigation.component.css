@@ -1,0 +1,22 @@
+.item-link {
+  display: block;
+  position: relative;
+  padding: 10px 0px;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+}
+
+.item-link.active::before {
+  content: "";
+  position: absolute;
+  height: 23px;
+  width: 5px;
+  top: 25%;
+  background-color: white;
+  border-radius: 0px 3px 3px 0px;
+}
+
+.item-link.active, .item-link:hover {
+  background-color: rgb(132, 134, 251);
+}

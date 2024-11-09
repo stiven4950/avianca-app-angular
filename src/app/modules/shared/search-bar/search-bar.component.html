@@ -1,0 +1,7 @@
+<div class="flex flex-row justify-between rounded-full w-80 bg-indigo-100 py-1 px-2">
+  <fa-icon [icon]="searchIcon" class="text-indigo-500"></fa-icon>
+  <input type="text" placeholder="Buscar" class="flex-grow bg-transparent outline-none mx-2" [formControl]="searchControl" (keyup)="handleSearch()" />
+  @if(searchControl.getRawValue()!.length > 0) {
+    <icon-button [icon]="closeIcon" color="text-indigo-500" (click)="handleClean()"></icon-button>
+  }
+</div>

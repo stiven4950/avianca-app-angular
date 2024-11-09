@@ -1,0 +1,35 @@
+<app-modal [show]="show" size="max-w-xl min-w-96">
+  <modal-header class="bg-indigo-400" (onClose)="handleClose()">
+    <fa-icon [icon]="airplaneProviderService.getSelectedAirplane()?.id ? updateIcon : createIcon"
+      class="inline-block"></fa-icon>
+    <h4 class="inline-block ml-2 font-semibold text-xl">
+      {{ airplaneProviderService.getSelectedAirplane()?.id ? "Actualizar" : "Crear" }} avión
+    </h4>
+  </modal-header>
+  <modal-body>
+    <form [formGroup]="formAirplane" (submit)="onSubmit()">
+      <div class="mt-3">
+        <label>Modelo<span class="text-red-500 font-bold">*</span></label>
+        <input type="text" class="form-control" formControlName="model" />
+        <div class="text-end text-red-800 text-xs" [hidden]="model.valid || model.pristine">
+          El modelo es obligatorio
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Capacidad<span class="text-red-500 font-bold">*</span></label>
+        <input type="number" class="form-control" formControlName="capacity" />
+        <div class="text-end text-red-800 text-xs" [hidden]="capacity.valid || capacity.pristine">
+          la capacidad es obligatoria
+        </div>
+      </div>
+
+      <button type="submit"
+        class="block bg-indigo-500 text-white py-1 px-2 rounded-full mx-auto mt-3 hover:bg-indigo-400">
+        <fa-icon [icon]="sendIcon"></fa-icon>
+        Crear
+      </button>
+
+    </form>
+  </modal-body>
+</app-modal>

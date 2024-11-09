@@ -1,0 +1,10 @@
+<div class="w-full h-screen">
+  <app-header />
+  <div class="flex content">
+    <menu-bar />
+    <div class="flex-grow p-4 bg-slate-800">
+      <router-outlet />
+    </div>
+  </div>
+  <toast [show]="toasProviderService.show()" [message]="toasProviderService.message()" />
+</div>
