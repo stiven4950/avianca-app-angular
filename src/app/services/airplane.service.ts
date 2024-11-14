@@ -27,4 +27,8 @@ export class AirplaneService {
   delete(id: number) {
     return this.http.delete(environment.apiUrl + "/airplanes/" + id);
   }
+
+  update(plane: Airplane) {
+    return this.http.put<Airplane>(environment.apiUrl + "/airplanes/" + plane.id, plane)
+  }
 }

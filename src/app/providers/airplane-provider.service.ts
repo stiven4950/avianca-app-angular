@@ -25,6 +25,21 @@ export class AirplaneProviderService {
     this.filteredAirplanes.update((state) => [...state, airplane]);
   }
 
+  updateAirplane(airplane: Airplane) {
+    this.airplanes.update((state) => {
+      return state.map(item => {
+        if (item.id === airplane.id) return airplane;
+        return item;
+      })
+    });
+    this.filteredAirplanes.update((state) => {
+      return state.map(item => {
+        if (item.id === airplane.id) return airplane;
+        return item;
+      })
+    });
+  }
+
   deleteAirplane(id: number) {
     this.airplanes.update((state) => state.filter(plane => plane.id !== id));
     this.filteredAirplanes.update((state) => state.filter(plane => plane.id !== id));

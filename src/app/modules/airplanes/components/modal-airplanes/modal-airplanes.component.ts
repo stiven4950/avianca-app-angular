@@ -31,7 +31,7 @@ export class ModalAirplanesComponent {
 
   formAirplane = new FormGroup({
     model: new FormControl('', { validators: [Validators.required] }),
-    capacity: new FormControl('', { validators: [Validators.required] }),
+    capacity: new FormControl('', { validators: [Validators.required, Validators.min(1)] }),
   });
 
   get model() {
@@ -44,7 +44,6 @@ export class ModalAirplanesComponent {
 
   ngOnInit() {
     this.airplaneProviderService.selectedAirplane$.subscribe((airplane: Airplane | null) => {
-      console.log("Cambios han ocurrido")
       if (airplane && airplane.id) {
         this.formAirplane.patchValue({
           model: airplane.model,
@@ -68,7 +67,15 @@ export class ModalAirplanesComponent {
       }
 
       if (this.airplaneProviderService.getSelectedAirplane()?.id) {
-
+        airplane.id = this.airplaneProviderService.getSelectedAirplane()?.id
+        this.airplaneService.update(airplane).subscribe({
+          next: ()=>{
+            this.airplaneProviderService.updateAirplane(airplane);
+            this.formAirplane.reset();
+            this.handleClose();
+            this.toastProviderService.showToast("Modificado exitosamente");
+          }
+        });
       } else {
         this.airplaneService.create(airplane).subscribe({
           next: (airplane) => {

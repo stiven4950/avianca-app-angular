@@ -18,7 +18,7 @@
 
       <div class="mt-3">
         <label>Capacidad<span class="text-red-500 font-bold">*</span></label>
-        <input type="number" class="form-control" formControlName="capacity" />
+        <input type="number" class="form-control" formControlName="capacity" min="1" />
         <div class="text-end text-red-800 text-xs" [hidden]="capacity.valid || capacity.pristine">
           la capacidad es obligatoria
         </div>
@@ -27,7 +27,7 @@
       <button type="submit"
         class="block bg-indigo-500 text-white py-1 px-2 rounded-full mx-auto mt-3 hover:bg-indigo-400">
         <fa-icon [icon]="sendIcon"></fa-icon>
-        Crear
+        {{ airplaneProviderService.getSelectedAirplane()?.id ? "Actualizar" : "Crear" }}
       </button>
 
     </form>

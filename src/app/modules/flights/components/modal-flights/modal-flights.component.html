@@ -1,0 +1,88 @@
+<app-modal [show]="show" size="max-w-xl min-w-96">
+  <modal-header class="bg-indigo-400" (onClose)="handleClose()">
+    <fa-icon [icon]="flightProviderService.getSelectedFlight()?.id ? updateIcon : createIcon"
+      class="inline-block"></fa-icon>
+    <h4 class="inline-block ml-2 font-semibold text-xl">
+      {{ flightProviderService.getSelectedFlight()?.id ? "Actualizar" : "Crear" }} avión
+    </h4>
+  </modal-header>
+  <modal-body>
+    <form [formGroup]="formFlight" (submit)="onSubmit()">
+      <div class="mt-3">
+        <label>Número de vuelo<span class="text-red-500 font-bold">*</span></label>
+        <input type="text" class="form-control" formControlName="flightNumber" />
+        <div class="text-end text-red-800 text-xs" [hidden]="flightNumber.valid || flightNumber.pristine">
+          El número de vuelo es obligatorio
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Fecha de salida<span class="text-red-500 font-bold">*</span></label>
+        <input type="date" class="form-control" formControlName="departureDate" min="1" />
+        <div class="text-end text-red-800 text-xs" [hidden]="departureDate.valid || departureDate.pristine">
+          Fecha de salida obligatoria
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Hora de salida<span class="text-red-500 font-bold">*</span></label>
+        <input type="time" class="form-control" formControlName="departureHour" min="1" />
+        <div class="text-end text-red-800 text-xs" [hidden]="departureHour.valid || departureHour.pristine">
+          Hora de salida obligatoria
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Fecha de llegada<span class="text-red-500 font-bold">*</span></label>
+        <input type="date" class="form-control" formControlName="arrivalDate" min="1" />
+        <div class="text-end text-red-800 text-xs" [hidden]="arrivalDate.valid || arrivalDate.pristine">
+          Fecha de llegada obligatoria
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Hora de llegada<span class="text-red-500 font-bold">*</span></label>
+        <input type="time" class="form-control" formControlName="arrivalHour" min="1" />
+        <div class="text-end text-red-800 text-xs" [hidden]="arrivalHour.valid || arrivalHour.pristine">
+          Hora de llegada obligatoria
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Origen<span class="text-red-500 font-bold">*</span></label>
+        <input type="text" class="form-control" formControlName="origin" />
+        <div class="text-end text-red-800 text-xs" [hidden]="origin.valid || origin.pristine">
+          Origen obligatorio
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Destino<span class="text-red-500 font-bold">*</span></label>
+        <input type="text" class="form-control" formControlName="destiny" />
+        <div class="text-end text-red-800 text-xs" [hidden]="destiny.valid || destiny.pristine">
+          Destino obligatorio
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label>Avión<span class="text-red-500 font-bold">*</span></label>
+        <select class="form-control" formControlName="airplaneId">
+          <option value="" selected>Seleccione...</option>
+          @for (plane of airplaneProvider.airplanes(); track $index) {
+          <option [value]="plane.id">{{plane.model}}</option>
+          }
+        </select>
+        <div class="text-end text-red-800 text-xs" [hidden]="airplaneId.valid || airplaneId.pristine">
+          Avión obligatorio
+        </div>
+      </div>
+
+      <button type="submit"
+        class="block bg-indigo-500 text-white py-1 px-2 rounded-full mx-auto mt-3 hover:bg-indigo-400">
+        <fa-icon [icon]="sendIcon"></fa-icon>
+        {{ flightProviderService.getSelectedFlight()?.id ? "Actualizar" : "Crear" }}
+      </button>
+
+    </form>
+  </modal-body>
+</app-modal>
